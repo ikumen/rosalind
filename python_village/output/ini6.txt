@@ -1,0 +1,8 @@
+we 2
+list 1
+We 1
+dicts 1
+also 1
+tried 3
+and 1
+Zen 1
