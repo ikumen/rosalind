@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 '''
-003_revc.py: Complementing a Strand of DNA
+REVC.py: Complementing a Strand of DNA
 
 Problem: In DNA strings, symbols 'A' and 'T' are complements of each other, as 
 are 'C' and 'G'. The reverse complement of a DNA string s is the string s^c 

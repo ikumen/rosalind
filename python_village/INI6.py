@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 '''
-006_ini6.py: Dictionaries
+INI6.py: Dictionaries
 
 Given: A string s of length at most 10000 letters.
 Return: How many times any word occurred in string. Each letter case 

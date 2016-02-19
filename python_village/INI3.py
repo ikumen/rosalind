@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 '''
-003_ini3.py: Strings and Lists
+INI3.py: Strings and Lists
 
 Given: A string s of length at most 200 letters and four integers a, b, c and d.
 Return: The slice of this string from indices a through b and c through d 

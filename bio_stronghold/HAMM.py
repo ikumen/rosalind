@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 '''
-006_hamm.py: Counting Point Mutations (http://rosalind.info/problems/hamm/)
+HAMM.py: Counting Point Mutations (http://rosalind.info/problems/hamm/)
 
 Problem: Given two strings s and t of equal length, the Hamming distance 
 between s and t, denoted dH(s,t)dH(s,t), is the number of corresponding symbols 

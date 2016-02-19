@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 '''
-002_rna.py: Transcribing DNA into RNA
+RNA.py: Transcribing DNA into RNA
 
 Problem: An RNA string is a string formed from the alphabet containing 'A', 
 'C', 'G', and 'U'. Given a DNA string tt corresponding to a coding strand, 

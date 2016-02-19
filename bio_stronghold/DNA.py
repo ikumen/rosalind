@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 '''
-001_dna.py: DNA
+DNA.py: DNA
 
 Problem: A string is simply an ordered collection of symbols selected from some 
 alphabet and formed into a word; the length of a string is the number of symbols 
