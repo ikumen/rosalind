@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
-"""
-fib.py: http://rosalind.info/problems/fib/
+'''
+004_fib.py: http://rosalind.info/problems/fib/
 
 Given: Positive integers n≤40n≤40 and k≤5k≤5.
 Return: The total number of rabbit pairs that will be present after nn months if we begin with 1 pair and in each generation, every pair of reproduction-age rabbits produces a litter of kk rabbit pairs (instead of only 1 pair).
@@ -11,11 +11,11 @@ Sample Dataset:
 
 Sample Output:
 19
-"""
+'''
 import sys
 import pytest
 
-'''
+"""
 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144
 
 1: 1 - born
@@ -24,7 +24,7 @@ import pytest
 4: 7   (1 -> 3b) + 3a
 5: 19  (1 -> 3c) + (3a -> 9a) + 3b
 6: 40  (1 -> 3d) + (3a -> 9b) + (3b -> 9) + 9a + 3c
-'''
+"""
 
 def fib(n, k):
 	if n == 0: 

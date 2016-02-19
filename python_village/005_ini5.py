@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 '''
-ini5.py: Working with Files
+005_ini5.py: Working with Files
 
 Given: A file containing at most 1000 lines.
 Return: A file containing all the even-numbered lines from the original file. 

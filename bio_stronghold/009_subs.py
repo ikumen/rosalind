@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
-"""
-subs.py: Finding a Motif in DNA (http://rosalind.info/problems/subs/)
+'''
+009_subs.py: Finding a Motif in DNA (http://rosalind.info/problems/subs/)
 
 Problem: Given two strings s and t, t is a substring of s if t is contained as a 
 contiguous collection of symbols in s (as a result, t must be no longer than s).
@@ -25,7 +25,7 @@ ATAT
 
 Sample Output:
 2 4 10
-"""
+'''
 import sys
 import pytest
 
