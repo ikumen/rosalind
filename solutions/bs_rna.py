@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 '''
-RNA.py: Transcribing DNA into RNA
+bs_rna.py: Transcribing DNA into RNA
 
 Problem: An RNA string is a string formed from the alphabet containing 'A', 
 'C', 'G', and 'U'. Given a DNA string tt corresponding to a coding strand, 
@@ -20,6 +20,8 @@ GAUGGAACUUGACUACGUAAAUU
 import os
 import pytest
 
+from helpers import output_path
+
 
 def transcribe_dna_to_rna(dna):
 	return dna.replace('T', 'U')
@@ -32,14 +34,12 @@ def test_transcribe_dna_to_rna():
 
 def main():
 	'''Main runner, to read data, compute and saves output.'''
-	basepath = os.path.dirname(__file__)
-
-	with open(os.path.join(basepath, 'data/rosalind_rna.txt')) as input:
+	with open(os.path.join(os.path.dirname(__file__), 'data/rosalind_rna.txt')) as input:
 		dna = input.readline().strip()
 
 	rna = transcribe_dna_to_rna(dna)
 		
-	with open(os.path.join(basepath, 'output/rna.txt'), 'w') as output:
+	with open(output_path(__file__), 'w') as output:
 		output.write(rna)
 
 

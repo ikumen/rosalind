@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 '''
-INI4.py: Conditions and Loops
+pv_ini4.py: Conditions and Loops
 
 Given: Two positive integers a and b (a<b<10000).
 Return: The sum of all odd integers from a through b, inclusively.
@@ -14,6 +14,8 @@ Sample Output:
 '''
 import os
 import pytest
+
+from helpers import output_path
 
 
 def sum_all_odds(a, b):
@@ -31,13 +33,11 @@ def test_sum_all_odds():
 
 def main():
 	'''Main runner, to read data, compute and saves output.'''
-	basepath = os.path.dirname(__file__)
-	
 	# read in data
-	with open(os.path.join(basepath, 'data/rosalind_ini4.txt')) as input:
+	with open(os.path.join(os.path.dirname(__file__), 'data/rosalind_ini4.txt')) as input:
 		a, b = [int(n) for n in input.read().split()]
 
-	with open(os.path.join(basepath, 'output/ini4.txt'), 'w') as output:
+	with open(output_path(__file__), 'w') as output:
 		output.write(str(sum_all_odds(a, b)))
 
 

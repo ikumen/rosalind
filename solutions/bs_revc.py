@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 '''
-REVC.py: Complementing a Strand of DNA
+bs_revc.py: Complementing a Strand of DNA
 
 Problem: In DNA strings, symbols 'A' and 'T' are complements of each other, as 
 are 'C' and 'G'. The reverse complement of a DNA string s is the string s^c 
@@ -20,6 +20,8 @@ ACCGGGTTTT
 import os
 import pytest
 
+from helpers import output_path
+
 
 def reverse_compliment(dna):
 	compliments = dna.maketrans('ACGT', 'TGCA')
@@ -32,12 +34,10 @@ def test_reverse_compliment():
 
 def main():
 	'''Main runner, to read data, compute and saves output.'''
-	basepath = os.path.dirname(__file__)
-
-	with open(os.path.join(basepath, 'data/rosalind_revc.txt')) as input:
+	with open(os.path.join(os.path.dirname(__file__), 'data/rosalind_revc.txt')) as input:
 		dna = input.readline().strip()
 		
-	with open(os.path.join(basepath, 'output/revc.txt'), 'w') as output:
+	with open(output_path(__file__), 'w') as output:
 		output.write(reverse_compliment(dna))
 
 

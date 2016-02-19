@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 '''
-INI6.py: Dictionaries
+pv_ini6.py: Dictionaries
 
 Given: A string s of length at most 10000 letters.
 Return: How many times any word occurred in string. Each letter case 
@@ -23,6 +23,7 @@ Zen 1
 import os
 import pytest
 
+from helpers import output_path
 
 def word_count(s):
 	words = s.split(' ')
@@ -47,15 +48,13 @@ def test_word_count():
 
 def main():
 	'''Main runner, to read data, compute and saves output.'''
-	basepath = os.path.dirname(__file__)
-	
 	# read in data
-	with open(os.path.join(basepath, 'data/rosalind_ini6.txt')) as input:
+	with open(os.path.join(os.path.dirname(__file__), 'data/rosalind_ini6.txt')) as input:
 		s = input.readline()
 	
 	counts = word_count(s)
 
-	with open(os.path.join(basepath, 'output/ini6.txt'), 'w') as output:
+	with open(output_path(__file__), 'w') as output:
 		for key in counts.keys():
 			output.write(key + ' ' + str(counts[key]) + '\n')
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 '''
-GC.py: Computing GC Content (http://rosalind.info/problems/gc/)
+bs_gc.py: Computing GC Content (http://rosalind.info/problems/gc/)
 
 Given: At most 10 DNA strings in FASTA format (of length at most 1 kbp each).
 Return: The ID of the string having the highest GC-content, followed by the 
@@ -23,11 +23,12 @@ Sample Output:
 Rosalind_0808
 60.919540
 '''
+import sys
 import os
 import pytest
 
 from collections import Counter
-
+from helpers import parse_fasta, output_path
 
 
 def compute_gc_content(dna):
@@ -51,30 +52,10 @@ def highest_gc(dnas):
 	return hi_gc
 
 
-def extract_fasta(input):
-	'''Extracts dna and it's ID from a fasta format file, returning a array of 
-	dna objects. For example: [{id: .., dna: ...},].'''
-	dnas = []
-	id = None
-	dna = ''
-	while True:
-		line = input.readline().strip()
-		if not line or line[0] == '>':
-			if id:
-				dnas.append({
-					'id': id[1:], # assume leading '>', and trims it
-					'dna': dna
-				})
-			dna = ''
-			id = line
-			if not line:
-				break
-		else:
-			dna += line
-	return dnas
-
-	
 def test_highest_gc():
+	'''Only tests the highest_gc and compute_gc_content methods, 
+	does not test loading the fasta file.
+	'''
 	dnas = [
 		{'id':'Rosalind_6404','dna':'CCTGCGGAAGATCGGCACTAGAATAGCCAGAACCGTTTCTCTGAGGCTTCCGGCCTTCCCTCCCACTAATAATTCTGAGG'},
 		{'id':'Rosalind_5959','dna':'CCATCGGTAGCGCATCCTTAGTCCAATTAAGTCCCTATCCAGGCGCTCCGCCGAAGGTCTATATCCATTTGTCAGCAGACACGC'},
@@ -85,19 +66,18 @@ def test_highest_gc():
 	assert 60.91954022988506 == hi_gc['gc']
 
 
+
 def main():
 	'''Main runner, to read data, compute and saves output.'''
-	basepath = os.path.dirname(__file__)
+	sequences = parse_fasta(os.path.join(os.path.dirname(__file__), 'data/rosalind_gc.txt'))
+	hi_gc = highest_gc(sequences)
 
-	with open(os.path.join(basepath, 'data/rosalind_gc.txt')) as input:
-		dnas = extract_fasta(input)
-
-	hi_gc = highest_gc(dnas)
-
-	with open(os.path.join(basepath, 'output/gc.txt'), 'w') as output:
+	with open(output_path(__file__), 'w') as output:
 		output.write(hi_gc['id'] + '\n')
 		output.write(str(hi_gc['gc']))
 
 
 if __name__ == '__main__':
 	main()
+	
+	

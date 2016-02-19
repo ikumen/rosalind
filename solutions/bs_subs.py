@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 '''
-SUBS.py: Finding a Motif in DNA (http://rosalind.info/problems/subs/)
+bs_subs.py: Finding a Motif in DNA (http://rosalind.info/problems/subs/)
 
 Problem: Given two strings s and t, t is a substring of s if t is contained as a 
 contiguous collection of symbols in s (as a result, t must be no longer than s).
@@ -29,6 +29,8 @@ Sample Output:
 import os
 import pytest
 
+from helpers import output_path
+
 
 def find_motifs(dna, motif):
 	'''Find all locations of motif as substring of dna.'''
@@ -46,17 +48,17 @@ def test_find_motifs():
 
 def main():
 	'''Main runner, to read data, compute and saves output.'''
-	basepath = os.path.dirname(__file__)
-
-	with open(os.path.join(basepath, 'data/rosalind_subs.txt')) as input:
+	with open(os.path.join(os.path.dirname(__file__), 'data/rosalind_subs.txt')) as input:
 		dna = input.readline().strip()
 		motif = input.readline().strip()
 		
 	locs = find_motifs(dna, motif)
 
-	with open(os.path.join(basepath, 'output/subs.txt'), 'w') as output:
+	with open(output_path(__file__), 'w') as output:
 		output.write(' '.join(map(str, locs)))
 
 
 if __name__ == '__main__':
 	main()
+
+	

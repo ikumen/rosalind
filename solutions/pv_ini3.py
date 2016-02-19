@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 '''
-INI3.py: Strings and Lists
+pv_ini3.py: Strings and Lists
 
 Given: A string s of length at most 200 letters and four integers a, b, c and d.
 Return: The slice of this string from indices a through b and c through d 
@@ -16,6 +16,8 @@ Humpty Dumpty
 '''
 import os
 import pytest
+
+from helpers import output_path
 
 
 def slices(s, begin1, end1, begin2, end2):
@@ -32,14 +34,12 @@ def test_slices():
 
 def main():
 	'''Main runner, to read data, compute and saves output.'''
-	basepath = os.path.dirname(__file__)
-
 	# read in data
-	with open(os.path.join(basepath, 'data/rosalind_ini3.txt')) as input:
+	with open(os.path.join(os.path.dirname(__file__), 'data/rosalind_ini3.txt')) as input:
 		s, indices = [line.strip() for line in input.readlines()]
 		b1, e1, b2, e2 = [int(n) for n in indices.split()]
 		
-	with open(os.path.join(basepath, 'output/ini3.txt'), 'w') as output:
+	with open(output_path(__file__), 'w') as output:
 		output.write(' '.join(slices(s, b1, e1, b2, e2)))
 
 

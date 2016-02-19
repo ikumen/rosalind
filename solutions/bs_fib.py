@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 '''
-FIB.py: http://rosalind.info/problems/fib/
+bs_fib.py: http://rosalind.info/problems/fib/
 
 Given: Positive integers n≤40n≤40 and k≤5k≤5.
 Return: The total number of rabbit pairs that will be present after nn months if we begin with 1 pair and in each generation, every pair of reproduction-age rabbits produces a litter of kk rabbit pairs (instead of only 1 pair).
@@ -11,20 +11,20 @@ Sample Dataset:
 
 Sample Output:
 19
-'''
-import os
-import pytest
 
-"""
-0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144
-
+Notes:
 1: 1 - born
 2: 1 - mate
 3: 4   (1 -> 3a)
 4: 7   (1 -> 3b) + 3a
 5: 19  (1 -> 3c) + (3a -> 9a) + 3b
 6: 40  (1 -> 3d) + (3a -> 9b) + (3b -> 9) + 9a + 3c
-"""
+'''
+import os
+import pytest
+
+from helpers import output_path
+
 
 def fib(n, k):
 	if n == 0: 
@@ -41,15 +41,14 @@ def test_fib():
 
 def main():
 	'''Main runner, to read data, compute and saves output.'''
-	basepath = os.path.dirname(__file__)
-
-	with open(os.path.join(basepath, 'data/rosalind_fib.txt')) as input:
+	with open(os.path.join(os.path.dirname(__file__), 'data/rosalind_fib.txt')) as input:
 		n, k = (input.readline().strip()).split()
 		n, k = map(int, [n, k])
 		
-	with open(os.path.join(basepath, 'output/fib.txt'), 'w') as output:
+	with open(output_path(__file__), 'w') as output:
 		output.write(str(fib(n, k)))
 
 
 if __name__ == '__main__':
 	main()
+

@@ -4,4 +4,4 @@ python:
 # install dependencies
 install: "pip install -r requirements.txt"
 # run tests
-script: "py.test python_village/*.py bio_stronghold/*.py"
+script: "py.test solutions/*.py solutions/helpers/*.py"

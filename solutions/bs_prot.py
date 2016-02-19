@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 '''
-PROT.py: Translating RNA into Protein (http://rosalind.info/problems/prot/)
+bs_prot.py: Translating RNA into Protein (http://rosalind.info/problems/prot/)
 
 Problem: The 20 commonly occurring amino acids are abbreviated by using 20 letters 
 from the English alphabet (all letters except for B, J, O, U, X, and Z). Protein 
@@ -24,14 +24,15 @@ MAMAPRTEINSTRING
 import os
 import pytest
 
-basepath = os.path.dirname(__file__)
+from helpers import output_path
+
 
 ## TODO: move to helpers. 
 class GeneticCodesMap():
 	'''Represents a genetic codon table.
 	'''
 	def __init__(self):
-		with open(os.path.join(basepath, 'data/rna_codon_table.txt')) as input:
+		with open(os.path.join(os.path.dirname(__file__), 'data/rna_codon_table.txt')) as input:
 			self.table = dict([line.strip().split() for line in input])
 
 	def get(self, codon):
@@ -57,10 +58,10 @@ def test_translate_to_protein():
 
 def main():
 	'''Main runner, to read data, compute and saves output.'''
-	with open(os.path.join(basepath, 'data/rosalind_prot.txt')) as input:
+	with open(os.path.join(os.path.dirname(__file__), 'data/rosalind_prot.txt')) as input:
 		rna = input.readline().strip()
 
-	with open(os.path.join(basepath, 'output/prot.txt'), 'w') as output:
+	with open(output_path(__file__), 'w') as output:
 		output.write(translate_to_protein(rna))
 
 

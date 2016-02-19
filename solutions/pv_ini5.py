@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 '''
-INI5.py: Working with Files
+pv_ini5.py: Working with Files
 
 Given: A file containing at most 1000 lines.
 Return: A file containing all the even-numbered lines from the original file. 
@@ -25,15 +25,15 @@ He beat a very brave retreat
 '''
 import os
 
+from helpers import output_path
+
 def main():
-	'''Main runner, to read data, compute and saves output.'''
-	basepath = os.path.dirname(__file__)
-	
+	'''Main runner, to read data, compute and saves output.'''	
 	# read in data
-	with open(os.path.join(basepath, 'data/rosalind_ini5.txt')) as input:
+	with open(os.path.join(os.path.dirname(__file__), 'data/rosalind_ini5.txt')) as input:
 		lines = input.readlines()
 				
-	with open(os.path.join(basepath, 'output/ini5.txt'), 'w') as output:
+	with open(output_path(__file__), 'w') as output:
 		i = 0
 		for line in lines:
 			if i % 2 == 1:

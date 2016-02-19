@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 '''
-HAMM.py: Counting Point Mutations (http://rosalind.info/problems/hamm/)
+bs_hamm.py: Counting Point Mutations (http://rosalind.info/problems/hamm/)
 
 Problem: Given two strings s and t of equal length, the Hamming distance 
 between s and t, denoted dH(s,t)dH(s,t), is the number of corresponding symbols 
@@ -20,6 +20,8 @@ Sample Output:
 import os
 import pytest
 
+from helpers import output_path
+
 
 def hamming_distance(dna1, dna2):
 	distance = 0
@@ -36,15 +38,12 @@ def test_hamming_distance():
 
 def main():
 	'''Main runner, to read data, compute and saves output.'''
-	basepath = os.path.dirname(__file__)
-
-	with open(os.path.join(basepath, 'data/rosalind_hamm.txt')) as input:
-		dna1 = input.readline().strip()
-		dna2 = input.readline().strip()		
+	with open(os.path.join(os.path.dirname(__file__), 'data/rosalind_hamm.txt')) as input:
+		dna1, dna2 = [line.strip() for line in input.readlines()]
 
 	distance = hamming_distance(dna1, dna2)
 
-	with open(os.path.join(basepath, 'output/hamm.txt'), 'w') as output:
+	with open(output_path(__file__), 'w') as output:
 		output.write(str(distance))
 
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 '''
-DNA.py: DNA
+bs_dna.py: DNA (http://rosalind.info/problems/dna/)
 
 Problem: A string is simply an ordered collection of symbols selected from some 
 alphabet and formed into a word; the length of a string is the number of symbols 
@@ -21,6 +21,9 @@ Sample Output:
 import os
 import sys
 import pytest
+
+from helpers import output_path
+
 
 def count_symbols(dna):
 	counts = {}
@@ -42,14 +45,12 @@ def test_count_symbols():
 
 def main():
 	'''Main runner, to read data, compute and saves output.'''
-	basepath = os.path.dirname(__file__)
-
-	with open(os.path.join(basepath, 'data/rosalind_dna.txt')) as input:
+	with open(os.path.join(os.path.dirname(__file__), 'data/rosalind_dna.txt')) as input:
 		dna = input.readline().strip()
 		dict_counts = count_symbols(dna)
 		counts = [dict_counts[base] for base in 'ACGT']
 
-	with open(os.path.join(basepath, 'output/dna.txt'), 'w') as output:
+	with open(output_path(__file__), 'w') as output:
 		output.write(' '.join(map(str, counts)))
 
 
