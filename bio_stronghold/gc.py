@@ -1,10 +1,30 @@
 #!/usr/bin/env python
 
-""".py: """
+"""
+gc.py: Computing GC Content (http://rosalind.info/problems/gc/)
+
+Given: At most 10 DNA strings in FASTA format (of length at most 1 kbp each).
+Return: The ID of the string having the highest GC-content, followed by the 
+GC-content of that string. Rosalind allows for a default error of 0.001 in all 
+decimal answers unless otherwise stated; please see the note on absolute error below.
+
+Sample Dataset:
+>Rosalind_6404
+CCTGCGGAAGATCGGCACTAGAATAGCCAGAACCGTTTCTCTGAGGCTTCCGGCCTTCCC
+TCCCACTAATAATTCTGAGG
+>Rosalind_5959
+CCATCGGTAGCGCATCCTTAGTCCAATTAAGTCCCTATCCAGGCGCTCCGCCGAAGGTCT
+ATATCCATTTGTCAGCAGACACGC
+>Rosalind_0808
+CCACCCTCGTGGTATGGCTAGGCATTCAGGAACCGGAGAACGCTTCAGACCAGCCCGGAC
+TGGGAACCTGCGGGCAGTAGGTGGAAT
+
+Sample Output:
+Rosalind_0808
+60.919540
+"""
 import sys
 import pytest
-
-#from collections import Counter
 
 
 def compute_gc_content(dna):
@@ -64,9 +84,6 @@ def test_highest_gc():
 
 def main():
 	'''Main runner, to read data, compute and saves output.'''
-	# rediret stdout to our output file
-	#sys.stdout = open('output/.txt', 'w')
-
 	with open('data/rosalind_gc.txt') as input:
 		dnas = extract_fasta(input)
 
