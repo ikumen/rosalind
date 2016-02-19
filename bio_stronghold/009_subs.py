@@ -26,7 +26,7 @@ ATAT
 Sample Output:
 2 4 10
 '''
-import sys
+import os
 import pytest
 
 
@@ -46,13 +46,15 @@ def test_find_motifs():
 
 def main():
 	'''Main runner, to read data, compute and saves output.'''
-	with open('data/rosalind_subs.txt') as input:
+	basepath = os.path.dirname(__file__)
+
+	with open(os.path.join(basepath, 'data/rosalind_subs.txt')) as input:
 		dna = input.readline().strip()
 		motif = input.readline().strip()
 		
 	locs = find_motifs(dna, motif)
 
-	with open('output/subs.txt', 'w') as output:
+	with open(os.path.join(basepath, 'output/subs.txt'), 'w') as output:
 		output.write(' '.join(map(str, locs)))
 
 

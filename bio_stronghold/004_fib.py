@@ -12,7 +12,7 @@ Sample Dataset:
 Sample Output:
 19
 '''
-import sys
+import os
 import pytest
 
 """
@@ -41,16 +41,13 @@ def test_fib():
 
 def main():
 	'''Main runner, to read data, compute and saves output.'''
-	# rediret stdout to our output file
-	#sys.stdout = open('output/.txt', 'w')
+	basepath = os.path.dirname(__file__)
 
-	with open('data/rosalind_fib.txt') as input:
+	with open(os.path.join(basepath, 'data/rosalind_fib.txt')) as input:
 		n, k = (input.readline().strip()).split()
 		n, k = map(int, [n, k])
 		
-		#print(fib(n, k))
-
-	with open('output/fib.txt', 'w') as output:
+	with open(os.path.join(basepath, 'output/fib.txt'), 'w') as output:
 		output.write(str(fib(n, k)))
 
 

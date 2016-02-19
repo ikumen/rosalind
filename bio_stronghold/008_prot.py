@@ -21,26 +21,24 @@ AUGGCCAUGGCGCCCAGAACUGAGAUCAAUAGUACCCGUAUUAACGGGUGA
 Sample Output:
 MAMAPRTEINSTRING
 """
-import sys
+import os
 import pytest
 
 
 #def tranlate_to_protein(rna):
-
 
 #def test_translate_to_protein():
 
 
 def main():
 	'''Main runner, to read data, compute and saves output.'''
-	# rediret stdout to our output file
-	#sys.stdout = open('output/.txt', 'w')
+	basepath = os.path.dirname(__file__)
 
-	# with open('data/rosalind_ini.txt') as input:
+	# with open(os.path.join(basepath, 'data/rosalind_ini.txt')) as input:
 	# 	s = input.readline()		
 
 
-	# with open('output/.txt', 'w') as output:
+	# with open(os.path.join(basepath, 'output/.txt'), 'w') as output:
 	# 	output.write()
 
 

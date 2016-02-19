@@ -17,7 +17,7 @@ AAAACCCGGT
 Sample Output:
 ACCGGGTTTT
 '''
-import sys
+import os
 import pytest
 
 
@@ -32,13 +32,12 @@ def test_reverse_compliment():
 
 def main():
 	'''Main runner, to read data, compute and saves output.'''
-	# rediret stdout to our output file
-	#sys.stdout = open('output/.txt', 'w')
+	basepath = os.path.dirname(__file__)
 
-	with open('data/rosalind_revc.txt') as input:
+	with open(os.path.join(basepath, 'data/rosalind_revc.txt')) as input:
 		dna = input.readline().strip()
 		
-	with open('output/revc.txt', 'w') as output:
+	with open(os.path.join(basepath, 'output/revc.txt'), 'w') as output:
 		output.write(reverse_compliment(dna))
 
 

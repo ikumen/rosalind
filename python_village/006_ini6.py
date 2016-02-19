@@ -20,6 +20,7 @@ we 2
 also 1
 Zen 1
 '''
+import os
 import pytest
 
 
@@ -46,16 +47,15 @@ def test_word_count():
 
 def main():
 	'''Main runner, to read data, compute and saves output.'''
-	# rediret stdout to our output file
-	#sys.stdout = open('output/.txt', 'w')
-
+	basepath = os.path.dirname(__file__)
+	
 	# read in data
-	with open('data/rosalind_ini6.txt') as input:
+	with open(os.path.join(basepath, 'data/rosalind_ini6.txt')) as input:
 		s = input.readline()
 	
 	counts = word_count(s)
 
-	with open('output/ini6.txt', 'w') as output:
+	with open(os.path.join(basepath, 'output/ini6.txt'), 'w') as output:
 		for key in counts.keys():
 			output.write(key + ' ' + str(counts[key]) + '\n')
 

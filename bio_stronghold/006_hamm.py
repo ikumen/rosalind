@@ -17,7 +17,7 @@ CATCGTAATGACGGCCT
 Sample Output:
 7
 '''
-import sys
+import os
 import pytest
 
 
@@ -36,13 +36,15 @@ def test_hamming_distance():
 
 def main():
 	'''Main runner, to read data, compute and saves output.'''
-	with open('data/rosalind_hamm.txt') as input:
-		dna1 = input.readline()
-		dna2 = input.readline()		
+	basepath = os.path.dirname(__file__)
+
+	with open(os.path.join(basepath, 'data/rosalind_hamm.txt')) as input:
+		dna1 = input.readline().strip()
+		dna2 = input.readline().strip()		
 
 	distance = hamming_distance(dna1, dna2)
 
-	with open('output/hamm.txt', 'w') as output:
+	with open(os.path.join(basepath, 'output/hamm.txt'), 'w') as output:
 		output.write(str(distance))
 
 

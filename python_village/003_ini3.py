@@ -14,7 +14,8 @@ HumptyDumptysatonawallHumptyDumptyhadagreatfallAlltheKingshorsesandalltheKingsme
 Sample Output:
 Humpty Dumpty
 '''
-import sys
+import os
+import pytest
 
 
 def slices(s, begin1, end1, begin2, end2):
@@ -31,15 +32,14 @@ def test_slices():
 
 def main():
 	'''Main runner, to read data, compute and saves output.'''
-	# rediret stdout to our output file
-	#sys.stdout = open('output/.txt', 'w')
+	basepath = os.path.dirname(__file__)
 
 	# read in data
-	with open('data/rosalind_ini3.txt') as input:
+	with open(os.path.join(basepath, 'data/rosalind_ini3.txt')) as input:
 		s, indices = [line.strip() for line in input.readlines()]
 		b1, e1, b2, e2 = [int(n) for n in indices.split()]
 		
-	with open('output/ini3.txt', 'w') as output:
+	with open(os.path.join(basepath, 'output/ini3.txt'), 'w') as output:
 		output.write(' '.join(slices(s, b1, e1, b2, e2)))
 
 

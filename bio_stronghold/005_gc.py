@@ -23,8 +23,11 @@ Sample Output:
 Rosalind_0808
 60.919540
 '''
-import sys
+import os
 import pytest
+
+from collections import Counter
+
 
 
 def compute_gc_content(dna):
@@ -72,25 +75,26 @@ def extract_fasta(input):
 
 	
 def test_highest_gc():
-	# dnas = [
-	# 	{'id':'Rosalind_6404','dna':'CCTGCGGAAGATCGGCACTAGAATAGCCAGAACCGTTTCTCTGAGGCTTCCGGCCTTCCCTCCCACTAATAATTCTGAGG'},
-	# 	{'id':'Rosalind_5959','dna':'CCATCGGTAGCGCATCCTTAGTCCAATTAAGTCCCTATCCAGGCGCTCCGCCGAAGGTCTATATCCATTTGTCAGCAGACACGC'},
-	# 	{'id':'Rosalind_0808','dna':'CCACCCTCGTGGTATGGCTAGGCATTCAGGAACCGGAGAACGCTTCAGACCAGCCCGGACTGGGAACCTGCGGGCAGTAGGTGGAAT'}
-	# ]
-	# hi_gc = highest_gc(dnas)
-	# assert 'Rosalind_0808' == hi_gc['id']
-	# assert 60.91954022988506 == hi_gc['gc']
-	assert True != False
+	dnas = [
+		{'id':'Rosalind_6404','dna':'CCTGCGGAAGATCGGCACTAGAATAGCCAGAACCGTTTCTCTGAGGCTTCCGGCCTTCCCTCCCACTAATAATTCTGAGG'},
+		{'id':'Rosalind_5959','dna':'CCATCGGTAGCGCATCCTTAGTCCAATTAAGTCCCTATCCAGGCGCTCCGCCGAAGGTCTATATCCATTTGTCAGCAGACACGC'},
+		{'id':'Rosalind_0808','dna':'CCACCCTCGTGGTATGGCTAGGCATTCAGGAACCGGAGAACGCTTCAGACCAGCCCGGACTGGGAACCTGCGGGCAGTAGGTGGAAT'}
+	]
+	hi_gc = highest_gc(dnas)
+	assert 'Rosalind_0808' == hi_gc['id']
+	assert 60.91954022988506 == hi_gc['gc']
 
 
 def main():
 	'''Main runner, to read data, compute and saves output.'''
-	with open('data/rosalind_gc.txt') as input:
+	basepath = os.path.dirname(__file__)
+
+	with open(os.path.join(basepath, 'data/rosalind_gc.txt')) as input:
 		dnas = extract_fasta(input)
 
 	hi_gc = highest_gc(dnas)
 
-	with open('output/gc.txt', 'w') as output:
+	with open(os.path.join(basepath, 'output/gc.txt'), 'w') as output:
 		output.write(hi_gc['id'] + '\n')
 		output.write(str(hi_gc['gc']))
 

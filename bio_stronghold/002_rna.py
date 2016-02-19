@@ -17,7 +17,7 @@ GATGGAACTTGACTACGTAAATT
 Sample Output:
 GAUGGAACUUGACUACGUAAAUU 
 '''
-import sys
+import os
 import pytest
 
 
@@ -32,15 +32,14 @@ def test_transcribe_dna_to_rna():
 
 def main():
 	'''Main runner, to read data, compute and saves output.'''
-	# rediret stdout to our output file
-	#sys.stdout = open('output/.txt', 'w')
+	basepath = os.path.dirname(__file__)
 
-	with open('data/rosalind_rna.txt') as input:
+	with open(os.path.join(basepath, 'data/rosalind_rna.txt')) as input:
 		dna = input.readline().strip()
 
 	rna = transcribe_dna_to_rna(dna)
 		
-	with open('output/rna.txt', 'w') as output:
+	with open(os.path.join(basepath, 'output/rna.txt'), 'w') as output:
 		output.write(rna)
 
 

@@ -23,21 +23,22 @@ And gallantly he chickened out
 Bravely talking to his feet
 He beat a very brave retreat
 '''
-
+import os
 
 def main():
 	'''Main runner, to read data, compute and saves output.'''
-	# rediret stdout to our output file
-	#sys.stdout = open('output/.txt', 'w')
-
+	basepath = os.path.dirname(__file__)
+	
 	# read in data
-	with open('./data/rosalind_ini5.txt') as input:
+	with open(os.path.join(basepath, 'data/rosalind_ini5.txt')) as input:
 		lines = input.readlines()
 				
-	with open('./output/ini5.txt', 'w') as output:
+	with open(os.path.join(basepath, 'output/ini5.txt'), 'w') as output:
+		i = 0
 		for line in lines:
-			if i % 2 == 0:
+			if i % 2 == 1:
 				output.write(line)
+			i += 1
 
 
 if __name__ == '__main__':

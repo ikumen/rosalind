@@ -12,7 +12,7 @@ Sample Dataset:
 Sample Output:
 7500
 '''
-import sys
+import os
 import pytest
 
 
@@ -31,15 +31,14 @@ def test_sum_all_odds():
 
 def main():
 	'''Main runner, to read data, compute and saves output.'''
-	# rediret stdout to our output file
-	#sys.stdout = open('output/.txt', 'w')
-
+	basepath = os.path.dirname(__file__)
+	
 	# read in data
-	with open('data/rosalind_ini4.txt') as input:
+	with open(os.path.join(basepath, 'data/rosalind_ini4.txt')) as input:
 		a, b = [int(n) for n in input.read().split()]
 
-	with open('output/ini4.txt', 'w') as output:
-		output.write(sum_all_odd(a, b))
+	with open(os.path.join(basepath, 'output/ini4.txt'), 'w') as output:
+		output.write(str(sum_all_odds(a, b)))
 
 
 if __name__ == '__main__':

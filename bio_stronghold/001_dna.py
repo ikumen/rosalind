@@ -18,6 +18,7 @@ AGCTTTTCATTCTGACTGCAACGGGCAATATGTCTCTGTGTGGATTAAAAAAAGAGTGTCTGATAGCAGC
 Sample Output:
 20 12 17 21
 '''
+import os
 import sys
 import pytest
 
@@ -41,15 +42,14 @@ def test_count_symbols():
 
 def main():
 	'''Main runner, to read data, compute and saves output.'''
-	# rediret stdout to our output file
-	#sys.stdout = open('output/.txt', 'w')
+	basepath = os.path.dirname(__file__)
 
-	with open('data/rosalind_dna.txt') as input:
+	with open(os.path.join(basepath, 'data/rosalind_dna.txt')) as input:
 		dna = input.readline().strip()
 		dict_counts = count_symbols(dna)
 		counts = [dict_counts[base] for base in 'ACGT']
 
-	with open('output/dna.txt', 'w') as output:
+	with open(os.path.join(basepath, 'output/dna.txt'), 'w') as output:
 		output.write(' '.join(map(str, counts)))
 
 
