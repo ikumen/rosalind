@@ -6,7 +6,6 @@ import pytest
 
 
 def test_():
-	'''Test for .'''
 
 
 def main():
@@ -14,13 +13,10 @@ def main():
 	# rediret stdout to our output file
 	#sys.stdout = open('output/.txt', 'w')
 
-	# read in data
 	with open('data/rosalind_ini.txt') as input:
-		s, indices = [line.strip() for line in input.readlines()]
-		b1, e1, b2, e2 = [int(n) for n in indices.split()]
-		
+		s = input.readline()		
 
-		
+
 	with open('output/.txt', 'w') as output:
 		output.write()
 

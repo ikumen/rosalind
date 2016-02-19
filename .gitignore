@@ -30,8 +30,8 @@ static/lib
 
 # tmp files
 *-old.py
-output/*.txt
-!output/keep
+*/output/*
+!*/output/keep
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
