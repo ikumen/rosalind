@@ -14,7 +14,7 @@ def parse_fasta(fasta_path):
 		while True:
 			line = input.readline().strip()
 
-			# reached the file or end of current sequence, 
+			# reached eof or end of current sequence, 
 			# time to write it out the sequence
 			if not line or line[0] == '>':
 				# but only do so if there's something to write out
@@ -43,7 +43,6 @@ def parse_fasta(fasta_path):
 def test_parse_fasta():
 	fasta_path = os.path.join(os.path.dirname(__file__), 'data/fasta_test_data.txt')
 	sequences = parse_fasta(fasta_path)
-	print(sequences)
 	assert sequences[0]['id'] == 'Rosalind_6404'
 	assert sequences[0]['dna'] == 'CCTGCGGAAGATCGGCACTAGAATAGCCAGAACCGTTTCTCTGAGGCTTCCGGCCTTCCCTCCCACTAATAATTCTGAGG'
 	assert sequences[1]['id'] == 'Rosalind_5959'
