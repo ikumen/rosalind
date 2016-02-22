@@ -78,13 +78,6 @@ def test_consensus_string(sample_matrix):
 
 def main():
 	'''Main runner, to read data, compute and saves output.'''
-	sequences = [{'id':'Rosalind_1', 'dna':'ATCCAGCT'},
-		{'id':'Rosalind_2', 'dna':'GGGCAACT'}, {'id':'Rosalind_3', 'dna':'ATGGATCT'},
-		{'id':'Rosalind_4', 'dna':'AAGCAACC'}, {'id':'Rosalind_5', 'dna':'TTGGAACT'},
-		{'id':'Rosalind_6', 'dna':'ATGCCATT'}, {'id':'Rosalind_7', 'dna':'ATGGCACT'}]
-	matrix = profile_matrix(sequences)
-	print(matrix)
-
 	sequences = parse_fasta(os.path.join(os.path.dirname(__file__), 'data/rosalind_cons.txt'))
 	matrix = profile_matrix(sequences)
 	consensus = concensus_string(matrix)
