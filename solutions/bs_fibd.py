@@ -43,11 +43,13 @@ from helpers import output_path
 def fibd(n, m):
 	pairs = [1]+[0] * (m-1)
 	for i in range(n-1):
-		# all pairs not in the last month (m) will move on to next month
-		next_month = pairs[:-1]
-		# all pairs not in first month are mature, and mate producing additional pair
+		# all pairs not in the last month (m) will be alive next month, basically
+		# we end up shifting them right 1 index in the pairs array
+		alive = pairs[:-1]
+		# all pairs not in first month are mature, and mate
 		matings = sum(pairs[1:])
-		pairs = [matings] + next_month
+		# pairs for the next month are: [new babies] + [alive]
+		pairs = [matings] + alive
 	return sum(pairs)
 
 
