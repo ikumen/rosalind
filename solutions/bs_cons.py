@@ -45,8 +45,9 @@ def profile_matrix(sequences):
 	'''
 	rows = len(sequences)
 	cols = len(sequences[0]['dna'])
-	# initialize a 4xN matrix to hold the profile  
-	matrix = [[0] * cols for i in range(4)] # 4 rows for ACGT
+	# initialize a 4xN matrix to hold the profile
+	# where matrix[n] = n profile for ACGT 
+	matrix = [[0] * cols for i in range(4)]
 	for r in range(rows):
 		for c in range(cols):
 			sym = sequences[r]['dna'][c]
